@@ -33,7 +33,9 @@ module.exports = function() {
 		return b.saving - a.saving;
 	});
 
-	var multiChunks = [];
+  var multiChunks = [];
+  var chunks = app.stats.chunks
+  console.log(chunks);
 	app.stats.modules.forEach(function(module) {
 		if(module.chunks.length >= 2) {
 			multiChunks.push({
@@ -70,6 +72,7 @@ module.exports = function() {
 		stats: app.stats,
 		multiRefs: multiRefs,
 		multiChunks: multiChunks,
-		longChains: longChains
+    longChains: longChains,
+    chunks: chunks
 	}));
 };
